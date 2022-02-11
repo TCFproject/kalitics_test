@@ -22,6 +22,18 @@ class PointagesRepository extends ServiceEntityRepository
     // /**
     //  * @return Pointages[] Returns an array of Pointages objects
     //  */
+
+    public function findCountHours($week =1,$id = 1){
+        return $this->createQueryBuilder("p")
+            ->select('sum(p.duree) as dureee')
+            ->where('p.id_utilisateur = :id')
+            ->andWhere('WEEK(p.date) = :semaine')
+            ->setParameter("semaine",$week)
+            ->setParameter("id",$id)
+            ->getQuery()
+            ->getResult();
+    }
+
     /*
     public function findByExampleField($value)
     {

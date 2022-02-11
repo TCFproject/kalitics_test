@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @UniqueEntity(
  *     fields={"date", "id_utilisateur"}
  * )
+ * @MyConstraints\Time
  */
 class Pointages
 {
@@ -30,7 +31,6 @@ class Pointages
 
     /**
      * @ORM\Column(type="time")
-     * @MyConstraints\Time
      */
     private $duree;
 

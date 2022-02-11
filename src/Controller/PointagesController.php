@@ -26,8 +26,10 @@ class PointagesController extends AbstractController
      */
     public function index(PointagesRepository $pointagesRepository): Response
     {
+        var_dump(intval( $pointagesRepository->findCountHours($week=2)[0]["dureee"]));
         return $this->render('pointages/index.html.twig', [
             'pointages' => $pointagesRepository->findAll(),
+            //'list' => $pointagesRepository->findCountHours(7)
         ]);
     }
 
