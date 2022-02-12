@@ -21,6 +21,7 @@ class ChantierController extends AbstractController
      */
     public function index(ChantierRepository $chantierRepository): Response
     {
+        //var_dump($chantierRepository->findAll());
         return $this->render('chantier/index.html.twig', [
             'chantiers' => $chantierRepository->findAll(),
         ]);

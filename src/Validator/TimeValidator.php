@@ -32,9 +32,9 @@ class TimeValidator extends ConstraintValidator
         }
 
         $dateAttr = $value->getDate();
-        $weekAttr = intval( $dateAttr->format("w"));
+        $weekAttr = intval( $dateAttr->format("W"));
         $SQLHours = $this->pointagesRepository->findCountHours($week=$weekAttr,$id=$value->getIdUtilisateur()->getId());
-        var_dump($SQLHours);
+
 
         $totalH = intval($SQLHours[0]["dureee"]) + intval($value->getDuree()->format("His"));
 
