@@ -19,6 +19,11 @@ class ChantierRepository extends ServiceEntityRepository
         parent::__construct($registry, Chantier::class);
     }
 
+    /*public function findGroupByUser(){
+        return $this->createQueryBuilder('c')
+            ->select('c.*')
+            ->groupBy("c.pointages")
+    }*/
     // /**
     //  * @return Chantier[] Returns an array of Chantier objects
     //  */

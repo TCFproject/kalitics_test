@@ -21,9 +21,20 @@ class ChantierController extends AbstractController
      */
     public function index(ChantierRepository $chantierRepository): Response
     {
-        //var_dump($chantierRepository->findAll());
+        $nb_de_utilisateur_par_chantier = [];
+        foreach ($chantierRepository->findAll() as $chantier){
+            $nb_de_utilisateur = [];
+            foreach ($chantier->getPointages() as $pointage){
+                if (!in_array($pointage->getIdUtilisateur()->getNom(),$nb_de_utilisateur)){
+                    $nb_de_utilisateur[] = $pointage->getIdUtilisateur()->getNom();
+                }
+            }
+            $nb_de_utilisateur_par_chantier[$chantier->getNom()] = $nb_de_utilisateur;
+        }
+
         return $this->render('chantier/index.html.twig', [
             'chantiers' => $chantierRepository->findAll(),
+            'nb_user' => $nb_de_utilisateur_par_chantier
         ]);
     }
 

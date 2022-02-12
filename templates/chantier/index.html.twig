@@ -14,9 +14,11 @@
                 <th>Addresse</th>
                 <th>Date_debut</th>
                 <th>actions</th>
+                <th>Nombre de membre</th>
             </tr>
         </thead>
         <tbody>
+        {% set nb_de_utilisateur_par_chantier = [] %}
         {% for chantier in chantiers %}
             <tr>
                 <td>{{ chantier.nom }}</td>
@@ -25,6 +27,9 @@
                 <td>
                     <a href="{{ path('chantier_show', {'id': chantier.id}) }}">show</a>
                     <a href="{{ path('chantier_edit', {'id': chantier.id}) }}">edit</a>
+                </td>
+                <td>
+                    {{ nb_user[chantier.nom]|length }}
                 </td>
             </tr>
         {% else %}
