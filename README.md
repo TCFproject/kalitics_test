@@ -14,4 +14,4 @@ Etape 1
 - Faire une migration avec les commandes "symfony console make:migration" puis "symfony console doctrine:migrations:migrate"
 
 Etape 2
-- Création des CRUD de chaque entité avec la commande "symfony console make:crud"
+- Créer les CRUD de chaque entité avec la commande "symfony console make:crud"

@@ -22,19 +22,35 @@ class ChantierController extends AbstractController
     public function index(ChantierRepository $chantierRepository): Response
     {
         $nb_de_utilisateur_par_chantier = [];
+        $nb_duree = [];
         foreach ($chantierRepository->findAll() as $chantier){
             $nb_de_utilisateur = [];
+            $totalSeconde = 0;
+            $totalMinute = 0;
+            $totalHeure = 0;
             foreach ($chantier->getPointages() as $pointage){
                 if (!in_array($pointage->getIdUtilisateur()->getNom(),$nb_de_utilisateur)){
                     $nb_de_utilisateur[] = $pointage->getIdUtilisateur()->getNom();
                 }
+                $totalHeure += intval( $pointage->getDuree()->format('H'));
+                $totalMinute += intval( $pointage->getDuree()->format('i'));
+                $totalSeconde += intval($pointage->getDuree()->format('s'));
             }
+            $string_duree_create = strval($totalHeure)." : ";
+            if ($totalMinute<10){
+                $string_duree_create.="0".strval($totalMinute);
+            }else{
+                $string_duree_create.=strval($totalMinute);
+            }
+            $string_duree_create.=" : 0".strval($totalSeconde);
+            $nb_duree[$chantier->getNom()] = $string_duree_create;
             $nb_de_utilisateur_par_chantier[$chantier->getNom()] = $nb_de_utilisateur;
         }
 
         return $this->render('chantier/index.html.twig', [
             'chantiers' => $chantierRepository->findAll(),
-            'nb_user' => $nb_de_utilisateur_par_chantier
+            'nb_user' => $nb_de_utilisateur_par_chantier,
+            'total_duree' => $nb_duree
         ]);
     }
 

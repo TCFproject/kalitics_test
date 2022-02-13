@@ -7,14 +7,15 @@
     <a href="{{ path('pointages_index') }}">Page pointages</a>
     <h1>Chantier</h1>
 
-    <table class="table" style="width: 50%;">
+    <table class="table" style="width: 60%;">
         <thead>
             <tr>
                 <th>Nom</th>
                 <th>Addresse</th>
                 <th>Date_debut</th>
                 <th>Actions</th>
-                <th>Nombre de membre</th>
+                <th>Nombre de personne</th>
+                <th>Nombre d'heures cumulés</th>
             </tr>
         </thead>
         <tbody style="text-align: center; vertical-align: middle;">
@@ -31,6 +32,9 @@
                 </td>
                 <td>
                     {{ nb_user[chantier.nom]|length }}
+                </td>
+                <td>
+                    {{ total_duree[chantier.nom] }}
                 </td>
             </tr>
         {% else %}
