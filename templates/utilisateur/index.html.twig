@@ -4,7 +4,7 @@
 
 {% block body %}
     <a href="{{ path('chantier_index') }}">Page chantier</a>
-    <a href="{{ path('pointages_index') }}">Page pointages</a>
+    <a href="{{ path('pointages_index') }}">Page pointage</a>
     <h2>Créer un nouvel utilisateur</h2>
     {{ include('utilisateur/_form.html.twig') }}
     <h1>Utilisateur</h1>
@@ -15,7 +15,7 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Matricule</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
