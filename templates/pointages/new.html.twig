@@ -3,9 +3,9 @@
 {% block title %}New Pointages{% endblock %}
 
 {% block body %}
+    <a href="{{ path('pointages_index') }}">back to list</a>
     <h1>Create new Pointages</h1>
 
     {{ include('pointages/_form.html.twig') }}
 
-    <a href="{{ path('pointages_index') }}">back to list</a>
 {% endblock %}

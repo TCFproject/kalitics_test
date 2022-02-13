@@ -3,30 +3,29 @@
 {% block title %}Chantier{% endblock %}
 
 {% block body %}
+    <a href="{{ path('chantier_index') }}">back to list</a>
     <h1>Chantier</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ chantier.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
+                <th>Nom : </th>
                 <td>{{ chantier.nom }}</td>
             </tr>
             <tr>
-                <th>Addresse</th>
+                <th>Addresse : </th>
                 <td>{{ chantier.addresse }}</td>
             </tr>
             <tr>
-                <th>Date_debut</th>
+                <th>Date_debut : </th>
                 <td>{{ chantier.dateDebut ? chantier.dateDebut|date('Y-m-d') : '' }}</td>
             </tr>
+        <tr>
+            <th>Nombre d'utilisateur sur ce chantier : </th>
+            <td>{{ nb_utilisateur|length }}</td>
+        </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('chantier_index') }}">back to list</a>
 
     <a href="{{ path('chantier_edit', {'id': chantier.id}) }}">edit</a>
 

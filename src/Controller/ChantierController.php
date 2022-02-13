@@ -65,8 +65,16 @@ class ChantierController extends AbstractController
      */
     public function show(Chantier $chantier): Response
     {
+        $nb_de_utilisateur = [];
+        foreach ($chantier->getPointages() as $pointage){
+            if (!in_array($pointage->getIdUtilisateur()->getNom(),$nb_de_utilisateur)){
+                $nb_de_utilisateur[] = $pointage->getIdUtilisateur()->getNom();
+            }
+        }
+
         return $this->render('chantier/show.html.twig', [
             'chantier' => $chantier,
+            'nb_utilisateur'=>$nb_de_utilisateur
         ]);
     }
 

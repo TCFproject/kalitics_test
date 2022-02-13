@@ -5,9 +5,11 @@
 {% block body %}
     <a href="{{ path('chantier_index') }}">Page chantier</a>
     <a href="{{ path('pointages_index') }}">Page pointages</a>
-    <h1>Utilisateur index</h1>
+    <h2>Créer un nouvel utilisateur</h2>
+    {{ include('utilisateur/_form.html.twig') }}
+    <h1>Utilisateur</h1>
 
-    <table class="table" style="width: 50%;">
+    <table class="table" style="width: 50%; text-align: center; ">
         <thead>
             <tr>
                 <th>Nom</th>
@@ -22,7 +24,7 @@
                 <td>{{ utilisateur.nom }}</td>
                 <td>{{ utilisateur.prenom }}</td>
                 <td>{{ utilisateur.matricule }}</td>
-                <td>
+                <td colspan="3">
                     <a href="{{ path('utilisateur_show', {'id': utilisateur.id}) }}">show</a>
                     <a href="{{ path('utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
                     {{ include('utilisateur/_delete_form.html.twig') }}
@@ -36,5 +38,4 @@
         </tbody>
     </table>
 
-    {{ include('utilisateur/_form.html.twig') }}
 {% endblock %}

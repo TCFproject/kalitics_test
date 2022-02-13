@@ -3,6 +3,8 @@
 {% block title %}Pointages{% endblock %}
 
 {% block body %}
+    <a href="{{ path('pointages_index') }}">back to list</a>
+
     <h1>Pointages</h1>
 
     <table class="table">
@@ -25,8 +27,6 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('pointages_index') }}">back to list</a>
 
     <a href="{{ path('pointages_edit', {'id': pointage.id}) }}">edit</a>
 

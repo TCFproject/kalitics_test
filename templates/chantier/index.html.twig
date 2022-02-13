@@ -5,7 +5,7 @@
 {% block body %}
     <a href="{{ path('utilisateur_index') }}">Page utilisateur</a>
     <a href="{{ path('pointages_index') }}">Page pointages</a>
-    <h1>Chantier index</h1>
+    <h1>Chantier</h1>
 
     <table class="table" style="width: 50%;">
         <thead>
@@ -17,7 +17,7 @@
                 <th>Nombre de membre</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="text-align: center; vertical-align: middle;">
         {% set nb_de_utilisateur_par_chantier = [] %}
         {% for chantier in chantiers %}
             <tr>
@@ -27,6 +27,7 @@
                 <td>
                     <a href="{{ path('chantier_show', {'id': chantier.id}) }}">show</a>
                     <a href="{{ path('chantier_edit', {'id': chantier.id}) }}">edit</a>
+                    {{ include('chantier/_delete_form.html.twig') }}
                 </td>
                 <td>
                     {{ nb_user[chantier.nom]|length }}
